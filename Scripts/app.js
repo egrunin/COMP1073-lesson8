@@ -23,6 +23,8 @@ var myArray = [
     true
 ];
 
+console.log(myArray.slice(4,1));
+
 for(var index=0; index < myArray.length; indexx++) {
     console.log(myArray[index]);
 }
