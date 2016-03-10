@@ -4,6 +4,8 @@
 (function () {
 
 "use strict";
+var output = "";
+var firstParagraph = document.getElementById("firstParagraph");
 
 var Person = {
     "age": 40,
@@ -18,7 +20,9 @@ var Person = {
         "Dima"
     ],
     "sayHello":function(){
-        console.log(Person.name + "  says hello");
+        // console.log(Person.name + "  says hello");
+        output += "<br>"
+        output += Person.name + "  says hello";
     }
     
 }; /* var Person = new Object();  */
@@ -28,17 +32,33 @@ var Person = {
 // for(var index = 0; index < Person.length; index ++);
 
 for(var key in Person) {
-    console.log(Person[key]);
+   
+    // check if key is familyNames array
     if(key === "familyNames") {
-        console.log("Family Names:  ");
-        console.log("++++++++++++++++++");
+        output += "<br>Family Names:  <br>";
+        output += "<hr><br>";
+        output += "<ul>";
         for(var index=0; index < Person.familyNames.length; index++) {
-            console.log("    " + Person.familyNames[index]);
-        }
-    } else {
-        console.log(Person[key]);
-    }
-}
+            output += "<li>" + Person.familyNames[index] + "</li>";
+        } // for loop
+        output += "</ul>";
+    } // if statemnt
+    
+    // check if the key is the sayHello Method
+    else if (key === "sayHello") {
+        Person.sayHello();
+    }// else if
+    
+    // for all other cases do the following
+    else {
+        output += Person[key] + "<br>";
+    } // else statemnt
+    
+} // for in
+
+firstParagraph.innerHTML = output;
+
+
 
 // console.log(Person.age);
 
