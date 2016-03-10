@@ -18,7 +18,7 @@ console.log("myVariable " + myVariable);
 var myArray = [
     "Jack G",
     "1 Earth",
-    "solar system",
+    "Barrie",
     40,
     true
 ];
