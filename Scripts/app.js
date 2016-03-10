@@ -8,11 +8,24 @@
 var myVariable = "hello";
 console.log("myVariable " + myVariable);
 
-var myArray = [];
+// var myArray = new Array();
 
-myArray.push("my first Greeting");
-myArray.push("my second Greeting");
-console.log(myArray[1]);
+//myArray[0] = "my first Greeting";
+//myArray[1] = "my second Greeting";
+
+//console.log(myArray[1]);
+
+var myArray = [
+    "Jack G",
+    "1 Earth",
+    "solar system",
+    40,
+    true
+];
+
+for(var index=0; index < myArray.length; indexx++) {
+    console.log(myArray[index]);
+}
 
 
 })();
