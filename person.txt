@@ -1,0 +1,14 @@
+{
+	"age": null,
+	"name": "Jack",
+	"address": "1 Earth",
+	"city": "Barrie",
+	"province": "Ontario",
+	"familyNames": [
+		"Alex",
+		"Sergei",
+		"Igor",
+		"Dima"
+	]
+
+}

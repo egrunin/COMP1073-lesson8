@@ -7,25 +7,22 @@
 var output = "";
 var firstParagraph = document.getElementById("firstParagraph");
 
-var Person = {
-    "age": 40,
-    "name": "Jack",
-    "address": "1 Earth",
-    "city": "Barrie",
-    "province": "Ontario",
-    "familyNames": [
-        "Alex",
-        "Sergei",
-        "Igor",
-        "Dima"
-    ],
-    "sayHello":function(){
-        // console.log(Person.name + "  says hello");
-        output += "<br>"
-        output += Person.name + "  says hello";
+// Ins
+var request = new XMLHttpRequest();
+request.open('GET','../person.txt', true);
+request.addEventListener('readystatechange', function(){
+    if(request.readyState === 4){
+        
     }
-    
-}; /* var Person = new Object();  */
+})
+request.send();
+
+console.log(request);
+
+var Person = {}; /* var Person = new Object();  */
+
+Person = JSON.parse(request.responseText);
+console.log(Person);
 
 // Person.age = 40;
 
@@ -45,8 +42,8 @@ for(var key in Person) {
     } // if statemnt
     
     // check if the key is the sayHello Method
-    else if (key === "sayHello") {
-        Person.sayHello();
+    /* else if (key === "sayHello") {
+        Person.sayHello(); */
     }// else if
     
     // for all other cases do the following
