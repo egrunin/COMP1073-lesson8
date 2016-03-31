@@ -3,58 +3,54 @@
 // setup your IIFE (Immediately Invoked Function Expression)
 (function () {
 
-"use strict";
-var output = "";
-var firstParagraph = document.getElementById("firstParagraph");
+    "use strict";
+    var output = "";
+    var firstParagraph = document.getElementById("firstParagraph");
 
-// Ins
-var request = new XMLHttpRequest();
-request.open('GET','../person.txt', true);
-request.addEventListener('readystatechange', function(){
-    if(request.readyState === 4){
-        
-    }
-})
-request.send();
+    // Instantiate new xhr object
+    var request = new XMLHttpRequest();
+    request.open('GET','../person.txt', true);
+    request.addEventListener('readystatechange', function(){
+        if(request.readyState === 4){
+            var Person = {}; /* var Person = new Object();  */
 
-console.log(request);
-
-var Person = {}; /* var Person = new Object();  */
-
-Person = JSON.parse(request.responseText);
-console.log(Person);
-
-// Person.age = 40;
-
-// for(var index = 0; index < Person.length; index ++);
-
-for(var key in Person) {
-   
-    // check if key is familyNames array
-    if(key === "familyNames") {
-        output += "<br>Family Names:  <br>";
-        output += "<hr><br>";
-        output += "<ul>";
-        for(var index=0; index < Person.familyNames.length; index++) {
-            output += "<li>" + Person.familyNames[index] + "</li>";
-        } // for loop
-        output += "</ul>";
-    } // if statemnt
+            Person = JSON.parse(request.responseText);
+            
+            Person.sayHello = function() {
+                output += "<br><hr><br>" + Person.name + " says hello";
+            }
+            
+            for(var key in Person) {
     
-    // check if the key is the sayHello Method
-    /* else if (key === "sayHello") {
-        Person.sayHello(); */
-    }// else if
-    
-    // for all other cases do the following
-    else {
-        output += Person[key] + "<br>";
-    } // else statemnt
-    
-} // for in
+                // check if key is familyNames array
+                if(key === "familyNames") {
+                    output += "<br>Family Names:  <br>";
+                    output += "<hr><br>";
+                    output += "<ul>";
+                    for(var index=0; index < Person.familyNames.length; index++) {
+                        output += "<li>" + Person.familyNames[index] + "</li>";
+                    } // for loop
+                    output += "</ul>";
+                } // if statemnt
+                
+                // check if the key is the sayHello Method
+                else if (key === "sayHello") {
+                    Person.sayHello();
+                }// else if
+                
+                // for all other cases do the following
+                else {
+                    output += Person[key] + "<br>";
+                } // else statemnt
+                
+            } // for in
 
-firstParagraph.innerHTML = output;
+            firstParagraph.innerHTML = output;
+            
+        }
+    })
 
+})();
 
 
 // console.log(Person.age);
@@ -95,7 +91,4 @@ myArray[4] = "705-555-5000";
 for(var index=0; index < myArray.length; indexx++) {
     console.log(myArray[index]);
 } */
-
-
-})();
 
